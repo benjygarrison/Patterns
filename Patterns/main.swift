@@ -8,7 +8,13 @@
 import Foundation
 
 //MARK: 1. Sliding Window
+
+//TODO: Create NON-FIXED length example
 //create a window spanning a subrange in a linear data structure and "slide" it along structure
+//     |------------|
+// | 1 | 2 | 4 | -1 | 7 | 10 | 3 |
+//     |------------|
+//    p1            p2            [ n = 3 ]
 
 //Example using consecutive sum of n length --> FIXED LENGTH
 func maxConsecutiveSum(_ array: [Int], _ n: Int) -> Int {
@@ -50,15 +56,21 @@ print(maxConsecutiveSum([1,20,9,-9,1,1,100], 4))
 print(maxConsecutiveSum([1,1,1,2,1,2,1,1,4,1,5,1], 6))
 print(maxConsecutiveSum([], 1))
 
+
+// * -------------------- *
+
+
 //MARK: 2. Two Pointers
 
+//TODO: Add better example
 // p1 start value = 1, p2 start value = 1
 //for loop....
 //p1 either becomes value of current index plus previous index (indices), or, if current index is greater, it becomes that
 //p2 tracks p1, but if p1 is smaller than p2, p2 rejects p1 value
-//
-//
-//[1,-2,3,4,-5]
+//------->|   |<-------
+//| 2 | 1 | 3 | 4 | 6 |
+//    |       |
+//   p1       p2      [find two elements that equal 6 (2 + 4)]
 
 func maxConsecutiveSumNotFixed(_ array: [Int]) -> Int {
     //set pointers, start from array 0
