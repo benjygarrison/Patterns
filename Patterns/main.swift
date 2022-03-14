@@ -62,8 +62,35 @@ print(maxConsecutiveSum([], 1))
 
 
 //MARK: 2. Two Pointers
+//Set 2 pointers to iterate through structure and compare values
 
-//TODO: Add better example
+//Ex: find unique values in a (sorted) array
+func findUniqueValues(_ array: [Int]) -> Int {
+    if array.count == 0 { return 0 }
+    
+    var unique: Int = 1
+    
+    var p1: Int = 0
+    var p2: Int = p1 + 1
+    
+    while p2 < array.count {
+        if array[p1] == array[p2] {
+            p2 += 1
+        } else {
+            p1 = p2
+            unique += 1
+        }
+    }
+    
+    return unique
+}
+
+print("Find unique values:")
+print(findUniqueValues([4,4,4,4])) //2
+print(findUniqueValues([-1,-2,-3,-4])) //4
+print(findUniqueValues([-4,-4,-4,-4,1,1,1,1,5,6,7,7,7,11,11])) //6
+print(findUniqueValues([])) //0
+print("")
 
 // p1 start value = 1, p2 start value = 1
 //for loop....
@@ -96,8 +123,38 @@ print(maxConsecutiveSumNotFixed([2,1,-10,1,11]))
 
 //MARK: Hare and Tortoise
 
-//TODO: Add array example
+//Ex. Array - array of ints where each int is between 1 and n (inclusive)
+//prove that at least one duplicate number exist
+//assume there is only one duplicate; find and return it's value
+//must not modify array, space = O(1), runtime must be less that O(n^2)
 
+func findDuplicate(_ array: [Int]) -> Int {
+    
+    var t: Int = array[0]
+    var h: Int = array[0]
+
+    repeat {
+        t = array[t]
+        h = array[array[h]]
+    } while t != h
+    
+    h = array[0]
+    
+    while t != h {
+        t = array[t]
+        h = array[h]
+    }
+        
+    return h
+}
+
+print("")
+print("Find duplicates:")
+print(findDuplicate([1,3,4,2,2])) //2
+print(findDuplicate([3,1,3,4,2])) //3
+print(findDuplicate([3,1,8,4,8,7,5,6,2])) //1
+
+//Ex. Linked list - search for loop (memory leak)
 // p1 and p2 start value = 1
 // p1 increment +2, p2, increment + 1
 // if p1 hits loop, it keeps cycling back to loop start; eventually p2 catches up at loop start
@@ -107,7 +164,6 @@ print(maxConsecutiveSumNotFixed([2,1,-10,1,11]))
 //  1 2 3     5
 //      \_____/
 //                  [cycle detected at node 3 --> 5 links back to 3]
-
 class Node {
     var data: Int
     weak var next: Node?
@@ -164,3 +220,16 @@ cycleNode5.next = cycleNode3 // <-- set 5 to cycle to 3, create loop
 print("")
 print("Question 4 answer is: \(hasCycle(first: cycleHead))")
 print("")
+
+// * -------------------- *
+
+//MARK: Merge Intervals
+//Six possibilities:
+//            --------------- Time ------------->
+//
+// 1. (  a  )[b]  --> [a and b don't overlap]           2. [  b  ](a) --> [b and a don't overlap]
+// 3. (  a [b] )  --> [a completely overlaps b]         4. [  b (a) ] --> [b completely overlaps a]
+// 5. ( a [) b ]  --> [a/b overlap, b ends after a]     5. [ b (] a ) --> [a/b overlap, a ends after b]
+//
+
+
