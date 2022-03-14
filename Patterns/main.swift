@@ -152,7 +152,7 @@ print("")
 print("Find duplicates:")
 print(findDuplicate([1,3,4,2,2])) //2
 print(findDuplicate([3,1,3,4,2])) //3
-print(findDuplicate([3,1,8,4,8,7,5,6,2])) //1
+print(findDuplicate([3,1,8,4,8,7,5,6,2])) //8
 
 //Ex. Linked list - search for loop (memory leak)
 // p1 and p2 start value = 1
@@ -233,3 +233,40 @@ print("")
 //
 
 
+//Ex. [NON-OVERLAPPING] given an array of (nested) intervals, return an array (nested )of non-overlapping intervals that cover all intervals in the input.
+//if input = [1,3],[2,6],[8,10],[15,18], then [1,3] and [2,6] overlap (2,3)
+//and can be merged
+//Note: arrays are sorted!
+
+func mergeOverlapping(_ intervals: [[Int]]) -> [[Int]] {
+    if intervals.isEmpty { return [] }
+    
+    //if sorting is not guaranteed, first sort arrays
+    let sorted = intervals.sorted { $0[0] < $1[0] }
+    
+    //create return of first sorted array
+    var result = [sorted.first!]
+    
+    //since result takes 1st subarray, start from index 1
+    for i in 1..<sorted.count {
+        let previousStart = result.last![0]
+        let previousEnd = result.last![1]
+        
+        let currentStart = sorted[i][0]
+        let currentEnd = sorted[i][1]
+     
+        //compare and combine
+        if previousEnd >= currentStart && previousEnd < currentEnd {
+            result.removeLast()
+            result.append([previousStart, currentEnd])
+        } else if previousEnd < currentStart {
+            result.append([currentStart, currentEnd])
+        }
+    }
+    return result
+}
+
+print("Overlapping intervals:")
+print(mergeOverlapping([[1,3],[2,6],[8,10],[12,18]]))
+print(mergeOverlapping([[1,4],[4,5]]))
+print(mergeOverlapping([[1,3],[2,6],[8,10],[9,18]]))
