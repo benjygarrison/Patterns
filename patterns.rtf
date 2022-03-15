@@ -6,7 +6,7 @@
 {\*\expandedcolortbl;;\cssrgb\c37964\c9215\c48780;\cssrgb\c0\c25950\c66514;\cssrgb\c0\c0\c0;
 \cssrgb\c72439\c17643\c36556;\cssrgb\c18044\c2673\c24205;\cssrgb\c0\c30219\c39596;\cssrgb\c90234\c23206\c47866;\cssrgb\c93000\c44193\c62103;
 \csgenericrgb\c100000\c100000\c100000;\cssrgb\c30831\c47797\c15540;}
-\margl1440\margr1440\vieww14700\viewh12540\viewkind0
+\margl1440\margr1440\vieww13520\viewh12280\viewkind0
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
 
 \f0\b\fs72 \cf2 Algo Patterns!\
@@ -95,11 +95,33 @@ Matched element = cycle detected\
 \f0\b\fs36 \cf3 \
 5. Cyclic Sort\
 
-\f1\b0\fs28 \cf4 \'85
+\f1\b0\fs28 \cf4 Iterate through array one number at a time, and if an element is at the incorrect index, swap it.\
+
+\f0\b \cf7 When to use:
+\f1\b0 \cf4 \
+	-sorted array within a given range\
+	- find missing, duplicate, or smallest number in sorted array\
+
+\f0\b \cf7 Common problems:
+\f1\b0 \cf4 \
+	-Find the missing number (easy)\
+	-Find the smallest positive number (medium)\
+ 
 \f0\b\fs36 \cf3 \
 6. In-Place Reversal (of Linked List)\
 
-\f1\b0\fs28 \cf4 \'85
+\f1\b0\fs28 \cf4 Reverse the links between a set of nodes in a linked list, without adding node or increasing memory usage\
+\cf8 https://www.youtube.com/watch?v=gNu-F_LnC0I\cf4 \
+
+\f0\b \cf7 When to use:
+\f1\b0 \cf4 \
+	-asked to reverse list w/o using extra memory\
+
+\f0\b \cf7 Common problems:
+\f1\b0 \cf4 \
+	- Reverse a sub-list (medium)\
+ 	- Reverse every K-element (medium)\
+
 \f0\b\fs36 \cf3 \
 7. Tree search\
 
@@ -116,15 +138,55 @@ Matched element = cycle detected\
 \f0\b\fs36 \cf3 \
 8. Two Heaps\
 
-\f1\b0\fs28 \cf4 \'85
+\f1\b0\fs28 \cf4 Divide a set of elements into 2 parts: a min heap and a max heap (binary trees) 
+\f0\b O(n log n)
+\f1\b0 \
+Store 1st half in min heap and find largest no, and 2nd half in max heap and find smallest\
+Median can be determined from top element of both heaps\
+\cf8 https://www.raywenderlich.com/53-data-structures-and-algorithms-in-swift-heap-sort\cf4 \
+
+\f0\b \cf7 When to use:
+\f1\b0 \cf4 \
+	-priority queues\
+	-asked to find largest/smallest/median elements\
+
+\f0\b \cf7 Common problems:
+\f1\b0 \cf4 \
+	-Find the median of a number stream (medium) \
+ 
 \f0\b\fs36 \cf3 \
 9. Subsets\
 
-\f1\b0\fs28 \cf4 \'85
+\f1\b0\fs28 \cf4 Create a BFS approach to find permutations or combinations in a list\
+Start with an empty set [[ ]] and then add each element from list incrementally\
+
+\f0\b \cf7 When to use: 
+\f1\b0 \cf4 \
+	-asked to find combinations or permutations\
+	-problems with subsets\
+
+\f0\b \cf7 Common problems:
+\f1\b0 \cf4 \
+	-Subsets with duplicates (easy)\
+	-String permutations by changing case (medium)\
+
 \f0\b\fs36 \cf3 \
 10. Modified Binary Search\
 
-\f1\b0\fs28 \cf4 \'85\
+\f1\b0\fs28 \cf4 Best algo 
+\f0\b O(log n)
+\f1\b0  whenever given a sorted array/linked list/matrix and asked to find an element\
+Find start and end, then divide by 2 to find key. Search outward from key \
+
+\f0\b \cf7 When to use:
+\f1\b0 \cf4 \
+	-whenever possible\
+
+\f0\b \cf7 Common problems:
+\f1\b0 \cf4 \
+	-Order agnostic binary search (easy)\
+	-Search in a sorted infinite array (medium)\
+\
 
 \f0\b\fs36 \cf3 11. Top K Elements\
 

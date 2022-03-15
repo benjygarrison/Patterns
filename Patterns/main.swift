@@ -152,7 +152,7 @@ print("")
 print("Find duplicates:")
 print(findDuplicate([1,3,4,2,2])) //2
 print(findDuplicate([3,1,3,4,2])) //3
-print(findDuplicate([3,1,8,4,8,7,5,6,2])) //8
+print(findDuplicate([3,1,8,4,7,1,5,6,2])) //8
 
 //Ex. Linked list - search for loop (memory leak)
 // p1 and p2 start value = 1
@@ -190,20 +190,6 @@ func hasCycle(first: Node) -> Bool {
 }
 
 //Arguments and results:
-
-//Args:
-//For 1 and 2
-let node6 = Node(6)
-let node5 = Node(5, node6)
-let node4 = Node(4, node5)
-let node3 = Node(3, node4)
-let node2 = Node(2, node3)
-let node1 = Node(1, node2)
-
-let node11 = Node(11, node4)
-let node10 = Node(10, node11)
-
-//For 3
 let cycleNode5 = Node(5)
 let cycleNode4 = Node(4)
 let cycleNode3 = Node(3)
@@ -270,3 +256,67 @@ print("Overlapping intervals:")
 print(mergeOverlapping([[1,3],[2,6],[8,10],[12,18]]))
 print(mergeOverlapping([[1,4],[4,5]]))
 print(mergeOverlapping([[1,3],[2,6],[8,10],[9,18]]))
+
+//MARK: Cyclic Sort
+//TODO: Come back to this; seems inefficient
+
+
+//MARK: In-Place Reversal of Linked List
+
+//Ex. reverse the direction of linked list nodes without adding any space complexity
+func reverseList(head: Node?) -> Node? {
+    
+    var current = head
+    var previous: Node?
+    var next: Node?
+    
+    while current != nil {
+        next = current?.next
+        current?.next = previous
+        previous = current
+        current = next
+    }
+    
+    return previous
+}
+
+//print out linked list
+func printList(head: Node?) {
+    var currentNode = head
+    while currentNode != nil {
+        print(currentNode?.data ?? -1)
+        currentNode = currentNode?.next
+    }
+}
+
+let reverseNode4 = Node(4)
+let reverseNode3 = Node(3)
+let reverseNode2 = Node(2)
+let reverseNode1 = Node(1)
+
+reverseNode1.next = reverseNode2
+reverseNode2.next = reverseNode3
+reverseNode3.next = reverseNode4
+reverseNode4.next = nil
+
+let myReversedList = reverseList(head: reverseNode1)
+
+print("")
+print("Linked list nodes to reverse:")
+printList(head: reverseNode1)
+print("")
+printList(head: myReversedList)
+
+//MARK: Binary Tree Search
+//TODO: Come back to this with previous algos
+
+
+//MARK: Two Heaps
+//TODO: Come back to this after seeing leetcode solutions
+// unsorted array = | 26 | 12 | 21 | 9 | 8 | 18 | 2 | 6 | 5 |
+//1. swap first and last elements: --> | 5 | 12 | 21 | 9 | 8 | 18 | 2 | 6 | 26 | --> n-1 is now out of heap
+//2. shift first element down until it reaches correct spot, largest elements will naturally fall to back, shrinking the heap size
+//
+//Ex.
+
+
